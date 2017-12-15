@@ -12,10 +12,22 @@ import { Router } from '@angular/router';
 export class BookComponent implements OnInit {
   public books: BookModel[];
   selectedBook: BookModel;
+  selectedId: string;
+  shown: boolean;
   myBook: BookModel;
+  hideme=[];
   
-  onSelect(book: BookModel): void {
+  onSelect(book: any): void {
     this.selectedBook = book;
+    console.log(this.selectedId);
+    this.shown = ! this.shown;
+    if (book._id === this.selectedId) {
+      this.shown = false;
+    } else {
+      this.shown = true;
+    }
+
+    this.selectedId = book._id;
   }
 
   constructor(private bookService: BookService, private authService: AuthService, private router: Router) { }
