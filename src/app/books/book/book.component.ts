@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
 export class BookComponent implements OnInit {
   public books: BookModel[];
   selectedBook: BookModel;
-  hideme=[];
+  hideme = [];
+  hideComments = [];
   
   onSelect(book: any): void {
     this.selectedBook = book;    

@@ -8,8 +8,11 @@
 
         <button class="btn details" (click)="hideme[i] = !hideme[i]">Hide/Show Details</button>
 
+        <button class="btn" (click)="hideComments[i] = !hideComments[i]">Hide/Show Comments</button>
+
         <span *ngIf="authService.isLoggedIn()">
           <button class="btn btn-success" (click)='addToMyBooks(book)'>Add to My Books</button>
+          <button class="btn" (click)='addComment(book)'>Add comment</button>
         </span>
 
         <div [hidden]="hideme[i]" class='selectedBook'>
