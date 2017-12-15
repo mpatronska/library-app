@@ -3,15 +3,15 @@
   
   <div class='container' *ngFor='let book of books;let i = index' >
     <div class='book'>
-      <!-- <p> -->
+
         <b>{{book.name}}</b> by {{book.author}}
-        <!-- <a [routerLink]="[book._id]">Details</a> -->
-        <!-- <button (click)="onSelect(book)">Details</button> -->
 
         <a (click)="hideme[i] = !hideme[i]">Hide/Show Details</a>
+
         <span *ngIf="authService.isLoggedIn()">
           <button (click)='addToMyBooks(book)'>Add to My Books</button>
         </span>
+        
         <div [hidden]="hideme[i]" class='selectedBook'>
           <h2>{{ book.name | uppercase }}</h2>
           <p><b>Author:</b> {{book.author}}</p>
@@ -20,17 +20,7 @@
           <img src="{{book.image}}" />
         </div>
 
-
-      <!-- </p> -->
     </div>
   </div>
 
-  <!-- <div class='selectedBook' *ngIf="selectedBook && shown">
-    <h2>{{ selectedBook.name | uppercase }}</h2>
-    <p><b>Author:</b> {{selectedBook.author}}</p>
-    <p><b>Category:</b> {{selectedBook.category}}</p>
-    <p><b>Desription:</b> {{selectedBook.description}}</p>
-    <img src="{{selectedBook.image}}" />
-  
-  </div> -->
 </div>
