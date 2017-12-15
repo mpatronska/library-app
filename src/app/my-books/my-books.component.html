@@ -1,0 +1,18 @@
+<div>
+    <h3>My Books:</h3>
+    
+    <div class='container' *ngFor='let book of myBooks' >
+      <div class='book'>
+        <p>
+          <b>{{book.name}}</b> by {{book.author}}
+          <!-- <a [routerLink]="[book._id]">Details</a> -->
+          <button (click)="onSelect(book)">Details</button>
+          <span *ngIf="authService.isLoggedIn()">
+            <button (click)='addToMyBooks(book)'>Add to My Books</button>
+          </span>
+  
+        </p>
+      </div>
+    </div>
+
+  </div>

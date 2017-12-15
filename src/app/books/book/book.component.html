@@ -1,0 +1,27 @@
+<div>
+  <h3>Available Books:</h3>
+  
+  <div class='container' *ngFor='let book of books' >
+    <div class='book'>
+      <p>
+        <b>{{book.name}}</b> by {{book.author}}
+        <!-- <a [routerLink]="[book._id]">Details</a> -->
+        <button (click)="onSelect(book)">Details</button>
+        <span *ngIf="authService.isLoggedIn()">
+          <button (click)='addToMyBooks(book)'>Add to My Books</button>
+        </span>
+
+      </p>
+    </div>
+  </div>
+
+  <div class='selectedBook' *ngIf="selectedBook">
+      
+    <h2>{{ selectedBook.name | uppercase }}</h2>
+    <p><b>Author:</b> {{selectedBook.author}}</p>
+    <p><b>Category:</b> {{selectedBook.category}}</p>
+    <p><b>Desription:</b> {{selectedBook.description}}</p>
+    <img src="{{selectedBook.image}}" />
+  
+  </div>
+</div>

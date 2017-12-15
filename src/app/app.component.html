@@ -1,0 +1,42 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{ title }}
+  </h1>
+   
+  <ngb-tabset>
+    <ngb-tab>
+      <ng-template ngbTabTitle><a routerLink="/books">Books</a></ng-template>
+      <ng-template ngbTabContent>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab *ngIf="authService.isLoggedIn()">
+      <ng-template ngbTabTitle><a routerLink="/mybooks">My Books</a></ng-template>
+      <ng-template ngbTabContent>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab *ngIf="!authService.isLoggedIn()">
+      <ng-template ngbTabTitle><a routerLink="/login">Login</a></ng-template>
+      <ng-template ngbTabContent>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab *ngIf="!authService.isLoggedIn()">
+      <ng-template ngbTabTitle><a routerLink="/register">Register</a></ng-template>
+      <ng-template ngbTabContent>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab *ngIf="authService.isLoggedIn()">
+      <ng-template ngbTabTitle><a routerLink="/logout">Logout</a></ng-template>
+      <ng-template ngbTabContent>
+      </ng-template>
+    </ngb-tab>
+
+  </ngb-tabset>
+
+  <div id="content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer>Online Library ©2017</footer>
+</div>
+
