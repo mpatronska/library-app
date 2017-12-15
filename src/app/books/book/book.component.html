@@ -6,12 +6,12 @@
 
         <b>{{book.name}}</b> by {{book.author}}
 
-        <a (click)="hideme[i] = !hideme[i]">Hide/Show Details</a>
+        <button class="btn details" (click)="hideme[i] = !hideme[i]">Hide/Show Details</button>
 
         <span *ngIf="authService.isLoggedIn()">
-          <button (click)='addToMyBooks(book)'>Add to My Books</button>
+          <button class="btn btn-success" (click)='addToMyBooks(book)'>Add to My Books</button>
         </span>
-        
+
         <div [hidden]="hideme[i]" class='selectedBook'>
           <h2>{{ book.name | uppercase }}</h2>
           <p><b>Author:</b> {{book.author}}</p>

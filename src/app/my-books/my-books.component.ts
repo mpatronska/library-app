@@ -12,6 +12,8 @@ import { BookModel } from '../books/model/book.model';
 export class MyBooksComponent implements OnInit {
 
   myBooks: BookModel[] = [];
+  selectedBook: BookModel;
+  hideme=[];
 
   constructor(private myBookService: MyBookService, private bookService: BookService, private authService: AuthService) { }
 
@@ -34,6 +36,10 @@ export class MyBooksComponent implements OnInit {
       .subscribe(e=> {
         console.log(e);
       });      
+  }
+
+  showStatus(book: BookModel) {
+    this.selectedBook = book;
   }
 
 }

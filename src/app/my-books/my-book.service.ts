@@ -8,7 +8,7 @@ const MYBOOKS_URL = `https://baas.kinvey.com/appdata/${APP_KEY}/mybooks`;
 @Injectable()
 export class MyBookService {
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient : HttpClient, ) { }
 
   getMyBooks(): Observable<any> {
     return this.httpClient.get(MYBOOKS_URL,      

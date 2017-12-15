@@ -5,3 +5,8 @@
 .selectedBook {
     background-color: aliceblue
 }
+
+.details {
+    background-color: cadetblue;
+    border-color: black;
+}

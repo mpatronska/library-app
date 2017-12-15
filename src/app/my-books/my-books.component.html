@@ -1,14 +1,10 @@
 <div>
     <h3>My Books:</h3>
     
-    <div class='container' *ngFor='let book of myBooks' >
+    <div class='container' *ngFor='let book of myBooks;let i = index' >
       <div class='book'>
-        <p>
           <b>{{book.name}}</b> by {{book.author}}
-          <!-- <a [routerLink]="[book._id]">Details</a> -->
-          <button (click)="onSelect(book)">Status</button>
- 
-        </p>
+
       </div>
     </div>
 
