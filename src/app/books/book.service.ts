@@ -21,9 +21,19 @@ export class BookService {
     )
   }
 
+  getBook(id: string): Observable<any> {
+    return this.httpClient.get(BOOKS_URL + `/${id}`,
+      { 
+        headers: this.createAuthHeaders('Basic')
+      }
+    )
+  }
+
   addToMyBooks(id: string): Observable<any> {
     return this.httpClient.post(MYBOOKS_URL,
-      id,
+      {
+        username: localStorage.getItem('username'),
+        book_id: id},
       { 
         headers: this.createAuthHeaders('Kinvey')
       }

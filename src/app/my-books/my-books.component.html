@@ -6,11 +6,8 @@
         <p>
           <b>{{book.name}}</b> by {{book.author}}
           <!-- <a [routerLink]="[book._id]">Details</a> -->
-          <button (click)="onSelect(book)">Details</button>
-          <span *ngIf="authService.isLoggedIn()">
-            <button (click)='addToMyBooks(book)'>Add to My Books</button>
-          </span>
-  
+          <button (click)="onSelect(book)">Status</button>
+ 
         </p>
       </div>
     </div>

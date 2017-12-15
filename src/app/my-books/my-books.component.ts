@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MyBookService } from './my-book.service';
+import { BookService } from '../books/book.service';
+import { AuthService } from '../authentication/auth.service';
 import { BookModel } from '../books/model/book.model';
 
 @Component({
@@ -9,14 +11,20 @@ import { BookModel } from '../books/model/book.model';
 })
 export class MyBooksComponent implements OnInit {
 
-  myBooks: BookModel[];
+  myBooks: BookModel[] = [];
 
-  constructor(private myBookService: MyBookService) { }
+  constructor(private myBookService: MyBookService, private bookService: BookService, private authService: AuthService) { }
 
   ngOnInit() {
     this.myBookService.getMyBooks()
       .subscribe(myBooks => {
-        this.myBooks = myBooks;
+        for (let book of myBooks) {
+          this.bookService.getBook(book.book_id)
+            .subscribe(data => {
+              this.myBooks.push(data);
+              console.log(this.myBooks);
+            })
+        }
       })
   }
 

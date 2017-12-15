@@ -45,9 +45,11 @@ export class BookComponent implements OnInit {
     this.router.navigate([`/book/${id}`]);
   }
 
-  addToMyBooks(book: BookModel): void {
+  addToMyBooks(book: any): void {
     this.myBook = book;
-    this.bookService.addToMyBooks(this.myBook.id);      
+    this.bookService.addToMyBooks(book._id)
+      .subscribe(data => console.log(data));
+    console.log('here')    
   }
 
 }
