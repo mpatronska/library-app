@@ -40,4 +40,8 @@ export class BookComponent implements OnInit {
     console.log('here')    
   }
 
+  editBook(id: string) {
+    this.router.navigate(['/books/edit/' + id])
+  }
+
 }

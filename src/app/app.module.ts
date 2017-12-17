@@ -14,13 +14,15 @@ import { BookComponent } from './books/book/book.component';
 import { MyBooksComponent } from './my-books/my-books.component';
 import { MyBookService } from './my-books/my-book.service';
 import { AddBookComponent } from './books/add-book/add-book.component';
+import { EditBookComponent } from './books/edit-book/edit-book.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookComponent,
     MyBooksComponent,
-    AddBookComponent
+    AddBookComponent,
+    EditBookComponent
   ],
   imports: [
     BrowserModule,

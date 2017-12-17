@@ -32,7 +32,7 @@ export class MyBooksComponent implements OnInit {
 
   addToMyBooks(book: BookModel): void {
     console.log('here')
-    this.myBookService.addToMyBooks(book.id)
+    this.myBookService.addToMyBooks(book._id)
       .subscribe(e=> {
         console.log(e);
       });      
