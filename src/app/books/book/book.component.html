@@ -1,7 +1,7 @@
 <div>
 
   <span *ngIf="authService.isLoggedIn() && authService.isAdmin()">
-    <button class="btn btn-success" (click)='addToMyBooks(book)'>Add book</button>
+    <button class="btn btn-success" routerLink="/books/add">Add book</button>
   </span>
 
   <h3>Available Books:</h3>

@@ -1,0 +1,73 @@
+<div class="container">
+    <h1>Add Book</h1>
+    <form (ngSubmit)="addBook()" #addBookForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" 
+        required
+        [(ngModel)]="model.name"
+        name="name"
+        #bookName="ngModel">
+        <div [hidden]="bookName.valid || bookName.pristine" class="alert alert-danger">
+          Name is required!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" class="form-control" id="author" 
+        required
+        [(ngModel)]="model.author"
+        name="author"
+        #author="ngModel">
+        <div [hidden]="author.valid || author.pristine" class="alert alert-danger">
+          Author is required!
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="category">Category</label>
+        <input type="text" class="form-control" id="category" 
+        required
+        [(ngModel)]="model.category"
+        name="category"
+        #category="ngModel">
+        <div [hidden]="category.valid || category.pristine" class="alert alert-danger">
+          Category is required!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="category">Description</label>
+        <input type="text" class="form-control" id="description" 
+        required
+        [(ngModel)]="model.description"
+        name="description"
+        #description="ngModel">
+        <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
+          Description is required!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="category">Image</label>
+        <input type="text" class="form-control" id="image" 
+        required
+        [(ngModel)]="model.image"
+        name="image"
+        #image="ngModel">
+        <div [hidden]="image.valid || image.pristine" class="alert alert-danger">
+          Image is required!
+        </div>
+      </div>
+  
+      <button [disabled]="!addBookForm.form.valid" type="submit" class="btn btn-success">Submit</button>    
+    </form>
+    <div *ngIf="addBookSuccess" class="alert alert-success">
+      Successfull Added Book {{addedBook}}!
+    </div>
+    <div *ngIf="addBookFail" class="alert alert-danger">
+        Book already exists!
+    </div>
+  </div>
+  

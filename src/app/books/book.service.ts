@@ -64,6 +64,15 @@ export class BookService {
     return true;
   }
 
+  addBook(bookModel: BookModel): Observable<any> {
+    return this.httpClient.post(BOOKS_URL,
+      JSON.stringify(bookModel),    
+      { 
+        headers: this.createAuthHeaders('Basic')
+      }
+    )
+  }
+
   private createAuthHeaders(type: string): HttpHeaders {
     if (type === 'Basic') {
       return new HttpHeaders({
