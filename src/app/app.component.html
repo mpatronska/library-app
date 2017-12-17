@@ -10,7 +10,7 @@
       <ng-template ngbTabContent>
       </ng-template>
     </ngb-tab>
-    <ngb-tab *ngIf="authService.isLoggedIn()">
+    <ngb-tab *ngIf="authService.isLoggedIn() && !authService.isAdmin()">
       <ng-template ngbTabTitle><a routerLink="/mybooks">My Books</a></ng-template>
       <ng-template ngbTabContent>
       </ng-template>

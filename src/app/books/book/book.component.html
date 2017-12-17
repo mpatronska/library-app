@@ -1,4 +1,9 @@
 <div>
+
+  <span *ngIf="authService.isLoggedIn() && authService.isAdmin()">
+    <button class="btn btn-success" (click)='addToMyBooks(book)'>Add book</button>
+  </span>
+
   <h3>Available Books:</h3>
   
   <div class='container' *ngFor='let book of books;let i = index' >
@@ -6,13 +11,18 @@
 
         <b>{{book.name}}</b> by {{book.author}}
 
-        <button class="btn details" (click)="hideme[i] = !hideme[i]">Hide/Show Details</button>
+        <button class="btn btn-success" (click)="hideme[i] = !hideme[i]">Hide/Show Details</button>
 
-        <button class="btn" (click)="hideComments[i] = !hideComments[i]">Hide/Show Comments</button>
+        <button class="btn btn-success" (click)="hideComments[i] = !hideComments[i]">Hide/Show Comments</button>
 
-        <span *ngIf="authService.isLoggedIn()">
+        <span *ngIf="authService.isLoggedIn() && !authService.isAdmin()">
           <button class="btn btn-success" (click)='addToMyBooks(book)'>Add to My Books</button>
-          <button class="btn" (click)='addComment(book)'>Add comment</button>
+          <button class="btn btn-success" (click)='addComment(book)'>Add comment</button>
+        </span>
+
+        <span *ngIf="authService.isLoggedIn() && authService.isAdmin()">
+          <button class="btn btn-success" (click)='addToMyBooks(book)'>Edit</button>
+          <button class="btn btn-success" (click)='addComment(book)'>Delete</button>
         </span>
 
         <div [hidden]="hideme[i]" class='selectedBook'>

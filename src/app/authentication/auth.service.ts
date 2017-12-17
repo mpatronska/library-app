@@ -66,6 +66,10 @@ export class AuthService {
     return authtoken === this.currentAuthtoken;
   }
 
+  isAdmin(): boolean {
+    return "admin" === localStorage.getItem('username');
+  }
+
   get authtoken(): string {
     return this.currentAuthtoken;
   }
