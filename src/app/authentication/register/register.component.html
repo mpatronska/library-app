@@ -3,11 +3,14 @@
   <form (ngSubmit)="register()" #registerForm="ngForm">
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" 
-      required
-      [(ngModel)]="model.username"
-      name="username"
-      #username="ngModel">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>      
+        <input type="text" class="form-control" id="username" placeholder="Username"
+        required
+        [(ngModel)]="model.username"
+        name="username"
+        #username="ngModel">
+      </div>
       <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
         Username is required!
       </div>
@@ -16,11 +19,14 @@
 
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" 
-      required
-      [(ngModel)]="model.password"
-      name="password"
-      #password="ngModel">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+        <input type="password" class="form-control" id="password" placeholder="Password"
+        required
+        [(ngModel)]="model.password"
+        name="password"
+        #password="ngModel">
+      </div>
       <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
         Password is required!
       </div>
@@ -28,11 +34,14 @@
 
     <div class="form-group">
       <label for="firstName">First Name</label>
-      <input type="text" class="form-control" id="firstName" 
-      required
-      [(ngModel)]="model.firstName"
-      name="firstName"
-      #firstName="ngModel">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon"></i>First Name</span>      
+        <input type="text" class="form-control" id="firstName" placeholder="First Name"
+        required
+        [(ngModel)]="model.firstName"
+        name="firstName"
+        #firstName="ngModel">
+      </div>
       <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
         First Name is required!
       </div>
@@ -40,11 +49,14 @@
 
     <div class="form-group">
       <label for="lastName">Last Name</label>
-      <input type="text" class="form-control" id="lastName" 
-      required
-      [(ngModel)]="model.lastName"
-      name="lastName"
-      #lastName="ngModel">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon"></i>Last Name</span> 
+        <input type="text" class="form-control" id="lastName" placeholder="Last Name"
+        required
+        [(ngModel)]="model.lastName"
+        name="lastName"
+        #lastName="ngModel">
+      </div>
       <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">
         Last Name is required!
       </div>
