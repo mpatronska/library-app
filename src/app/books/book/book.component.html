@@ -1,7 +1,7 @@
 <div>
 
   <span *ngIf="authService.isLoggedIn() && authService.isAdmin()">
-    <button class="btn btn-success" routerLink="/books/add">Add book</button>
+    <button class="btn btn-primary btn-xs" routerLink="/books/add">Add book</button>
   </span>
 
   <h3>Available Books:</h3>
@@ -11,18 +11,18 @@
 
         <b>{{book.name}}</b> by {{book.author}}
 
-        <button class="btn btn-success " (click)="hideme[i] = !hideme[i]">Hide/Show Details</button>
+        <button class="btn btn-info btn-xs" (click)="hideme[i] = !hideme[i]">Hide/Show Details</button>
 
-        <button class="btn btn-success" (click)="hideComments[i] = !hideComments[i]">Hide/Show Comments</button>
+        <button class="btn btn-info btn-xs" (click)="hideComments[i] = !hideComments[i]">Hide/Show Comments</button>
 
         <span *ngIf="authService.isLoggedIn() && !authService.isAdmin()">
-          <button class="btn btn-success" (click)='addToMyBooks(book)'>Add to My Books</button>
-          <button class="btn btn-success" (click)='addComment(book)'>Add comment</button>
+          <button class="btn btn-success btn-xs" (click)='addToMyBooks(book)'>Add to My Books</button>
+          <button class="btn btn-primary btn-xs" (click)='addComment(book)'>Add comment</button>
         </span>
 
         <span *ngIf="authService.isLoggedIn() && authService.isAdmin()">
-          <button class="btn btn-success" (click)='editBook(book._id)'>Edit</button>
-          <button class="btn btn-success" (click)='addComment(book) [book]'>Delete</button>
+          <button class="btn btn-warning btn-xs" (click)='editBook(book._id)'>Edit</button>
+          <button class="btn btn-danger btn-xs" (click)='addComment(book) [book]'>Delete</button>
         </span>
 
         <div [hidden]="hideme[i]" class='selectedBook'>
