@@ -5,16 +5,15 @@
   </span>
 
   <h3>Available Books:</h3>
-  
-  <div class='container' *ngFor='let book of books;let i = index' >
-    <div class='book'>
 
-        <b>{{book.name}}</b> by {{book.author}}
+  <div class="row">
+    <div *ngFor="let book of books; let i = index">
+      <div class="col-md-4">
+        <h2>{{ book.name | uppercase }}</h2>
 
-        <button class="btn btn-info btn-xs" (click)="hideme[i] = !hideme[i]">Hide/Show Details</button>
-
-        <button class="btn btn-info btn-xs" (click)="hideComments[i] = !hideComments[i]">Hide/Show Comments</button>
-
+        <button class="btn btn-info btn-xs" (click)="hideme[i] = !hideme[i]">Details</button>
+        <button class="btn btn-info btn-xs" (click)="hideComments[i] = !hideComments[i]">Comments<span class="badge">0</span></button>
+        
         <span *ngIf="authService.isLoggedIn() && !authService.isAdmin()">
           <button class="btn btn-success btn-xs" (click)='addToMyBooks(book)'>Add to My Books</button>
           <button class="btn btn-primary btn-xs" (click)='addComment(book)'>Add comment</button>
@@ -25,14 +24,13 @@
           <button class="btn btn-danger btn-xs" (click)='addComment(book) [book]'>Delete</button>
         </span>
 
-        <div [hidden]="hideme[i]" class='selectedBook'>
-          <h2>{{ book.name | uppercase }}</h2>
+        <div [hidden]="hideme[i]" class='selectedBook'>          
           <p><b>Author:</b> {{book.author}}</p>
           <p><b>Category:</b> {{book.category}}</p>
           <p><b>Desription:</b> {{book.description}}</p>
-          <img src="{{book.image}}" />
+          <img class="img-rounded" src="{{book.image}}" />
         </div>
-
+      </div>
     </div>
   </div>
 
