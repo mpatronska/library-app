@@ -68,7 +68,10 @@ export class BookService {
     return this.httpClient.post(BOOKS_URL,
       JSON.stringify(bookModel),    
       { 
-        headers: this.createAuthHeaders('Basic')
+        headers: {
+          'Authorization': `Basic ${btoa(`kid_rJJ-HIeMM:a18d9440a60740e79953a48472c688e9`)}`,
+          'Content-Type': 'application/json'
+        }
       }
     )
   }

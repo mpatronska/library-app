@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookModel } from '../model/book.model';
 import { BookService } from '../book.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-book',
@@ -14,10 +15,10 @@ export class AddBookComponent implements OnInit {
   public addBookFail: boolean;
   public addedBook: string;
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService, private router : Router) { }
 
   ngOnInit() {
-    this.model = new BookModel("", "", "", "", "", "");
+    this.model = new BookModel("", "", "", "", "");
   }
 
   addBook() : void {
@@ -27,6 +28,7 @@ export class AddBookComponent implements OnInit {
           this.addBookSuccess = true;
           this.addedBook = data['name'];
           console.log('success: ' + data);
+          // this.router.navigate(['/books']);
         },
         err => {
           this.addBookFail = true;

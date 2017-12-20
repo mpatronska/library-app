@@ -22,7 +22,7 @@ export class EditBookComponent implements OnInit {
       this.id = params['id'];
     });
       
-    this.model = new BookModel("", "", "", "", "", "");
+    this.model = new BookModel("", "", "", "", "");
   }
 
   editBook() : void {
