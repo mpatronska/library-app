@@ -21,8 +21,15 @@ export class EditBookComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
-      
+
     this.model = new BookModel("", "", "", "", "");
+
+    this.bookService.getBook(this.id)
+      .subscribe(data => {
+        // console.log("edit book on init: " + JSON.stringify(data));
+        this.model = data;        
+    })
+    
   }
 
   editBook() : void {
