@@ -37,11 +37,25 @@ export class BookComponent implements OnInit {
   addToMyBooks(book: any): void {
     this.bookService.addToMyBooks(book._id)
       .subscribe(data => console.log(data));
-    console.log('here')    
   }
 
   editBook(id: string) {
     this.router.navigate(['/books/edit/' + id])
+  }
+
+  deleteBook(id: string) {
+    this.bookService.deleteBook(id)
+      .subscribe(data => {
+        
+
+        this.bookService.getBooks()
+        .subscribe(books => {
+          console.log(books);
+          this.books = books
+        });
+      });
+
+
   }
 
 }

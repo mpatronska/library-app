@@ -21,7 +21,7 @@
 
         <span *ngIf="authService.isLoggedIn() && authService.isAdmin()">
           <button class="btn btn-warning btn-xs" (click)='editBook(book._id)'>Edit</button>
-          <button class="btn btn-danger btn-xs" (click)='addComment(book) [book]'>Delete</button>
+          <button class="btn btn-danger btn-xs" (click)='deleteBook(book._id)'>Delete</button>
         </span>
 
         <div [hidden]="hideme[i]" class='selectedBook'>          
