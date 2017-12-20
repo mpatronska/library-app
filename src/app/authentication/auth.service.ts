@@ -66,8 +66,10 @@ export class AuthService {
     return authtoken === this.currentAuthtoken;
   }
 
+  //only admin has role
   isAdmin(): boolean {
-    return "admin" === localStorage.getItem('username');
+    let role: string = localStorage.getItem('role');
+    return role === 'admin'; 
   }
 
   get authtoken(): string {

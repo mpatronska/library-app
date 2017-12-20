@@ -73,13 +73,14 @@ export class BookService {
     )
   }
 
+  //using master secret
   editBook(id, bookModel: BookModel): Observable<any> {
     console.log(id);
     return this.httpClient.put(BOOKS_URL + `/${id}`, 
     JSON.stringify(bookModel), 
     {
       headers: {
-        'Authorization': `Kinvey ${localStorage.getItem('authtoken')}`,
+        'Authorization': `Basic ${btoa(`kid_rJJ-HIeMM:a18d9440a60740e79953a48472c688e9`)}`,
         'Content-Type': 'application/json'
       }
     });
