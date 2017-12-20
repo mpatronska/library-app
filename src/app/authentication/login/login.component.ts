@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.model)
       .subscribe(
         data => {
+          localStorage.clear();
           console.log("login-data: " + JSON.stringify(data));
           console.log("role on login: " + localStorage.getItem('role'))
           this.authService.authtoken = data['_kmd']['authtoken'];
