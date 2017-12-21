@@ -21,6 +21,17 @@ export class MyBookService {
     )
   }
 
+  getMyBook(bookId: string): Observable<any> {
+    return this.httpClient.get(MYBOOKS_URL + `/?query=%7B%22book_id%22:%22${bookId}%22%7D`,      
+      { 
+        headers: {
+          'Authorization': `Kinvey ${localStorage.getItem('authtoken')}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    )
+  }
+
   addToMyBooks(id: string): Observable<any> {
 
     return this.httpClient.post(MYBOOKS_URL,

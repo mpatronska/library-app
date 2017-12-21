@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
 import { AuthService } from '../../authentication/auth.service';
+import { CommentService } from '../../comments/comment.service';
 import { BookModel } from '../model/book.model';
 import { Router } from '@angular/router';
 
@@ -19,7 +20,11 @@ export class BookComponent implements OnInit {
     this.selectedBook = book;    
   }
 
-  constructor(private bookService: BookService, private authService: AuthService, private router: Router) { }
+  constructor(
+    private bookService: BookService, 
+    private authService: AuthService, 
+    private commentService: CommentService,
+    private router: Router) { }
 
   ngOnInit() {
     this.bookService.getBooks()
@@ -58,6 +63,10 @@ export class BookComponent implements OnInit {
         .subscribe(data => {});
 
 
+  }
+
+  addComment(book: any): void {
+    this.router.navigate(['/books/comment/' + book._id]);
   }
 
 }

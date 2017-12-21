@@ -11,7 +11,7 @@ import { BookModel } from '../books/model/book.model';
 })
 export class MyBooksComponent implements OnInit {
 
-  myBooks: BookModel[] = [];
+  myBooks: any[] = [];
   selectedBook: BookModel;
   hideme=[];
 

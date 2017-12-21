@@ -13,8 +13,10 @@ import { BookService } from './books/book.service';
 import { BookComponent } from './books/book/book.component';
 import { MyBooksComponent } from './my-books/my-books.component';
 import { MyBookService } from './my-books/my-book.service';
+import { CommentService } from './comments/comment.service';
 import { AddBookComponent } from './books/add-book/add-book.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
+import { CommentComponent } from './comments/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { EditBookComponent } from './books/edit-book/edit-book.component';
     BookComponent,
     MyBooksComponent,
     AddBookComponent,
-    EditBookComponent
+    EditBookComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { EditBookComponent } from './books/edit-book/edit-book.component';
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [AuthGuard, BookService, MyBookService],
+  providers: [AuthGuard, BookService, MyBookService, CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

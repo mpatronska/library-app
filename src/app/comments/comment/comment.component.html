@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Add Coment for {{book.name}}</h1>
+
+    <form (ngSubmit)="addComment(bookId); addCommentForm.reset()" #addCommentForm="ngForm">
+      <div class="form-group">
+        <!-- <label for="name">Name</label> -->
+          
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <textarea class="form-control" rows="5" id="comment" placeholder="Type a comment here ..."></textarea>
+        </div>
+
+        <!-- <div [hidden]="comment.valid || comment.pristine" class="alert alert-danger">
+          Comment is required!
+        </div> -->
+      </div>
+
+      <button [disabled]="!addCommentForm.form.valid" type="submit" class="btn btn-success">Submit</button>
+
+    </form>
+
+    <div *ngIf="addBookSuccess" class="alert alert-success">
+      Successfull Added Comment!
+      
+    </div>
+    <div *ngIf="addBookFail" class="alert alert-danger">
+        Book already exists!
+    </div>
+</div>
+  
