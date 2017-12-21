@@ -43,7 +43,7 @@ export class BookService {
     //   } else {
         return this.httpClient.post(MYBOOKS_URL,
           {
-            username: localStorage.getItem('username'),
+            user_id: localStorage.getItem('user_id'),
             book_id: id,
             status: 'Not Started'},
           { 

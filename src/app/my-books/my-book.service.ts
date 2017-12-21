@@ -11,7 +11,7 @@ export class MyBookService {
   constructor(private httpClient : HttpClient, ) { }
 
   getMyBooks(): Observable<any> {
-    return this.httpClient.get(MYBOOKS_URL,      
+    return this.httpClient.get(MYBOOKS_URL + `/?query=%7B%22user_id%22:%22${localStorage.getItem('user_id')}%22%7D`,      
       { 
         headers: {
           'Authorization': `Kinvey ${localStorage.getItem('authtoken')}`,
@@ -22,8 +22,12 @@ export class MyBookService {
   }
 
   addToMyBooks(id: string): Observable<any> {
+
     return this.httpClient.post(MYBOOKS_URL,
-      {id},      
+      {
+        "book_id": id,
+        "user_id": localStorage.getItem('user_id')
+      },      
       { 
         headers: {
           'Authorization': `Kinvey ${localStorage.getItem('authtoken')}`,
