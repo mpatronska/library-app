@@ -99,6 +99,16 @@ export class BookService {
       });
   }
 
+  deleteMyBook(id): Observable<any> {
+    return this.httpClient.delete(MYBOOKS_URL + `/?query=%7B%22book_id%22:%22${id}%22%7D`, 
+      {
+        headers: {
+          'Authorization': `Basic ${btoa(`kid_rJJ-HIeMM:a18d9440a60740e79953a48472c688e9`)}`,
+          'Content-Type': 'application/json'
+        }
+      });
+  }
+
   private createAuthHeaders(type: string): HttpHeaders {
     if (type === 'Basic') {
       return new HttpHeaders({

@@ -1,11 +1,12 @@
 <div>
     <h3>My Books:</h3>
-    
-    <div class='container' *ngFor='let book of myBooks;let i = index' >
-      <div class='book'>
-          <b>{{book.name}}</b> by {{book.author}}
-
+    <div class="row">
+      <div *ngFor='let book of myBooks;let i = index' >
+        <div class="col-md-4">
+            <div class="book">
+            <b>{{book.name}}</b> by {{book.author}}
+            </div>
+        </div>
       </div>
     </div>
-
   </div>

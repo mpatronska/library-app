@@ -45,15 +45,17 @@ export class BookComponent implements OnInit {
 
   deleteBook(id: string) {
     this.bookService.deleteBook(id)
-      .subscribe(data => {
-        
+      .subscribe(data => {        
 
         this.bookService.getBooks()
-        .subscribe(books => {
-          console.log(books);
-          this.books = books
-        });
+          .subscribe(books => {
+            console.log(books);
+            this.books = books
+          });        
       });
+
+      this.bookService.deleteMyBook(id)
+        .subscribe(data => {});
 
 
   }
