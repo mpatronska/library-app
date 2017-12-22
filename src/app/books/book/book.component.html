@@ -30,6 +30,16 @@
           <p><b>Desription:</b> {{book.description}}</p>
           <img class="img-rounded" src="{{book.image}}" />
         </div>
+
+        <div [hidden]="hideComments[i]" class='selectedBook'>   
+            <div *ngFor="let comment of comments">   
+              <span *ngIf="comment.book_id === book._id">
+                  <p>{{comment.content}}</p>
+              </span>
+
+            </div>    
+        </div>
+
       </div>
     </div>
   </div>

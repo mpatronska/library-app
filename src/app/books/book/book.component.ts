@@ -3,6 +3,7 @@ import { BookService } from '../book.service';
 import { AuthService } from '../../authentication/auth.service';
 import { CommentService } from '../../comments/comment.service';
 import { BookModel } from '../model/book.model';
+import { CommentModel } from '../../comments/model/comment.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class BookComponent implements OnInit {
   public books: BookModel[];
+  public comments: CommentModel[];
   selectedBook: BookModel;
   hideme = [];
   hideComments = [];
@@ -32,6 +34,12 @@ export class BookComponent implements OnInit {
         console.log(books);
         this.books = books
       });
+    
+    this.commentService.getComments()
+      .subscribe(comments => {
+        console.log(comments);
+        this.comments = comments;
+      })
   }
 
   getBook(id: string) {

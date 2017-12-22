@@ -26,4 +26,15 @@ export class CommentService {
       }
     )
   }
+
+  getComments(): Observable<any> {
+    return this.httpClient.get(COMMENTS_URL,        
+      { 
+        headers: {
+          'Authorization': `Basic ${btoa(`guest:guest`)}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    )
+  }
 }
