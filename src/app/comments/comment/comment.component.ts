@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookModel } from '../../books/model/book.model';
 import { BookService } from '../../books/book.service';
+import { CommentService } from '../comment.service';
 
 @Component({
   selector: 'app-comment',
@@ -13,10 +14,14 @@ export class CommentComponent implements OnInit {
   bookId: string;
   book: BookModel;
   @Input() comment: string;
+  addCommentSuccess: boolean;
+  addCommentFail: boolean;
+
 
   constructor(
     private route: ActivatedRoute,
-    private bookService: BookService) { }
+    private bookService: BookService,
+    private commentService: CommentService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -33,7 +38,13 @@ export class CommentComponent implements OnInit {
   }
 
   addComment(bookId: string): void {
-
-  }
+    this.commentService.addComment(bookId, this.comment)
+      .subscribe(data => {
+        console.log(data);
+        this.addCommentSuccess = true;
+      }, err => {
+        this.addCommentFail = true;
+      });
+  }  
 
 }
