@@ -48,4 +48,15 @@ export class MyBookService {
     )
   }
 
+  deleteFromMyBooks(id: string): Observable<any> {
+    return this.httpClient.delete(MYBOOKS_URL + `/?query=%7B%22book_id%22:%22${id}%22%7D`,      
+    { 
+      headers: {
+        'Authorization': `Kinvey ${localStorage.getItem('authtoken')}`,
+        'Content-Type': 'application/json'
+      }
+    }
+  )
+  }
+
 }

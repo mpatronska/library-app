@@ -1,7 +1,11 @@
 .book {
-    background-color: rgb(188, 161, 201)
+    background-color: rgb(227, 204, 238)
 }
 
 .selectedBook {
-    background-color: aliceblue
+    background-color: rgb(232, 226, 243)
+}
+
+.selectedComment {
+    background-color: bisque
 }
