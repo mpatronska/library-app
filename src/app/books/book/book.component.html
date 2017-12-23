@@ -20,8 +20,8 @@
         </span>
 
         <span *ngIf="authService.isLoggedIn() && authService.isAdmin()">
-          <button class="btn btn-warning btn-xs" (click)='editBook(book._id)'>Edit</button>
-          <button class="btn btn-danger btn-xs" (click)='deleteBook(book._id)'>Delete</button>
+          <button class="btn btn-warning btn-xs" (click)='editBook(book._id)'>Edit Book</button>
+          <button class="btn btn-danger btn-xs" (click)='deleteBook(book._id)'>Delete Book</button>
         </span>
 
         <div [hidden]="hideme[i]" class='selectedBook'>          
@@ -31,10 +31,14 @@
           <img class="img-rounded" src="{{book.image}}" />
         </div>
 
-        <div [hidden]="hideComments[i]" class='selectedBook'>   
+        <div [hidden]="hideComments[i]" class='selectedComment'>   
             <div *ngFor="let comment of comments">   
               <span *ngIf="comment.book_id === book._id">
-                  <p>{{comment.content}}</p>
+                  <p><i>{{comment.content}}</i>
+                    <span *ngIf="authService.isLoggedIn() && authService.isAdmin()">
+                        <button class="btn btn-danger btn-xs" (click)='deleteComment(comment._id)'>Delete Comment</button>
+                      </span>
+                  </p>
               </span>
 
             </div>    

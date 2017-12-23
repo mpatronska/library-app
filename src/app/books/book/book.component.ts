@@ -77,4 +77,29 @@ export class BookComponent implements OnInit {
     this.router.navigate(['/books/comment/' + book._id]);
   }
 
+  getCommentsCountByBookId(bookId: string): number {
+    let count = 0;
+    let comments = [];
+    this.commentService.getCommentsCountByBookId(bookId)
+      .subscribe(data => {
+        comments.push(data);
+        console.log("getCommentsCountByBookId: " + comments)
+        count = comments.length;
+      });
+    
+    return count;
+  }
+
+  deleteComment(commentId: string): void {
+    this.commentService.deleteComment(commentId)
+      .subscribe(data => {
+        
+        this.commentService.getComments()
+        .subscribe(comments => {
+          console.log(comments);
+          this.comments = comments;
+        })
+      })
+  }
+
 }

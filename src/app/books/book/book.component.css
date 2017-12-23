@@ -10,3 +10,7 @@
     background-color: cadetblue;
     border-color: black;
 }
+
+.selectedComment {
+    background-color:lemonchiffon;
+}
