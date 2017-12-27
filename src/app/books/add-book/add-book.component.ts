@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookModel } from '../model/book.model';
 import { BookService } from '../book.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-book',
@@ -14,6 +15,8 @@ export class AddBookComponent implements OnInit {
   public addBookSuccess: boolean;
   public addBookFail: boolean;
   public addedBook: string;
+  categories = ["novel", "prose", "fiction"];
+  category: string = "";
 
   constructor(private bookService: BookService, private router : Router) { }
 
@@ -21,7 +24,9 @@ export class AddBookComponent implements OnInit {
     this.model = new BookModel("", "", "", "", "");
   }
 
-  addBook() : void {
+  addBook(form: NgForm) : void {
+    this.model.category = form.controls['category'].value;
+    console.log('category: ' + this.category);
     this.bookService.addBook(this.model)
       .subscribe(
         data => {

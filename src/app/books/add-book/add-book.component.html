@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Add Book</h1>
-    <form (ngSubmit)="addBook(); addBookForm.reset()" #addBookForm="ngForm">
+    <form (ngSubmit)="addBook(addBookForm); addBookForm.reset()" #addBookForm="ngForm">
       <div class="form-group">
         <!-- <label for="name">Name</label> -->
         <div class="input-group">
@@ -18,6 +18,7 @@
 
       <div class="form-group">
         <!-- <label for="author">Author</label> -->
+
         <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon"></i>Author name</span>
           <input type="text" class="form-control" id="author" placeholder="Author name"
@@ -32,18 +33,18 @@
       </div>
   
       <div class="form-group">
-        <!-- <label for="category">Category</label> -->
+      
         <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon"></i>Category</span>
-          <input type="text" class="form-control" id="category" placeholder="Category"
-          required
-          [(ngModel)]="model.category"
-          name="category"
-          #category="ngModel">
+          <select name="category" class="form-control" [(ngModel)]="category" #categoryName="ngModel" required>
+            <option *ngFor="let c of categories" [value]="c">{{c}}</option>
+          </select>
         </div>
-        <div [hidden]="category.valid || category.pristine" class="alert alert-danger">
+        
+        <div [hidden]="categoryName.valid || categoryName.pristine" class="alert alert-danger">
           Category is required!
         </div>
+
       </div>
 
       <div class="form-group">
