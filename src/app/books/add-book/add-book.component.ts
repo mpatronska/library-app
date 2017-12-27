@@ -24,9 +24,8 @@ export class AddBookComponent implements OnInit {
     this.model = new BookModel("", "", "", "", "");
   }
 
-  addBook(form: NgForm) : void {
-    this.model.category = form.controls['category'].value;
-    console.log('category: ' + this.category);
+  addBook() : void {
+    this.model.category = this.category;
     this.bookService.addBook(this.model)
       .subscribe(
         data => {
