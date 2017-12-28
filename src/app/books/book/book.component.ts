@@ -5,6 +5,7 @@ import { CommentService } from '../../comments/comment.service';
 import { BookModel } from '../model/book.model';
 import { CommentModel } from '../../comments/model/comment.model';
 import { Router } from '@angular/router';
+import {FilterPipe} from './filter-pipe';
 
 @Component({
   selector: 'app-book',

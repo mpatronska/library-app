@@ -1,6 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  
+<div style="text-align:center">  
    
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -17,6 +16,7 @@
           <li><a routerLink="/books">Books</a></li>          
           <li *ngIf="authService.isLoggedIn() && !authService.isAdmin()"><a routerLink="/mybooks">My Books</a></li>
         </ul>
+
         <ul class="nav navbar-nav navbar-right">
           <li *ngIf="!authService.isLoggedIn()"><a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
           <li *ngIf="!authService.isLoggedIn()"><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -27,7 +27,7 @@
     </div>
   </nav>
 
-  <hr>
+  <hr>  
 
   <div id="content">
     <router-outlet></router-outlet>
