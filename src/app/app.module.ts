@@ -18,6 +18,7 @@ import { AddBookComponent } from './books/add-book/add-book.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
 import { CommentComponent } from './comments/comment/comment.component';
 import { FilterNamePipe } from './books/pipes/filter-name.pipe';
+import { PagerService } from './books/pager.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { FilterNamePipe } from './books/pipes/filter-name.pipe';
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [AuthGuard, BookService, MyBookService, CommentService],
+  providers: [AuthGuard, BookService, MyBookService, CommentService, PagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

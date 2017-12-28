@@ -6,6 +6,7 @@ import { BookModel } from '../model/book.model';
 import { CommentModel } from '../../comments/model/comment.model';
 import { Router } from '@angular/router';
 import { FilterNamePipe } from '../pipes/filter-name.pipe';
+import { PagerService } from '../pager.service';
 
 @Component({
   selector: 'app-book',
@@ -18,6 +19,8 @@ export class BookComponent implements OnInit {
   selectedBook: BookModel;
   hideme = [];
   hideComments = [];
+  pager: any = {};
+  pagedItems: any[];
   
   onSelect(book: any): void {
     this.selectedBook = book;    
@@ -27,13 +30,15 @@ export class BookComponent implements OnInit {
     private bookService: BookService, 
     private authService: AuthService, 
     private commentService: CommentService,
+    private pagerService: PagerService,
     private router: Router) { }
 
   ngOnInit() {
     this.bookService.getBooks()
       .subscribe(books => {
         console.log(books);
-        this.books = books
+        this.books = books;
+        this.setPage(1);
       });
     
     this.commentService.getComments()
@@ -41,6 +46,18 @@ export class BookComponent implements OnInit {
         console.log(comments);
         this.comments = comments;
       })
+  }
+
+  setPage(page: number) {
+    if (page < 1 || page > this.pager.totalPages) {
+        return;
+    }
+
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.books.length, page);
+
+    // get current page of items
+    this.pagedItems = this.books.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
   getBook(id: string) {
