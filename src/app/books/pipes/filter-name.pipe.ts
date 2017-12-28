@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'FilterPipe',
+    name: 'FilterNamePipe',
 })
-export class FilterPipe implements PipeTransform {
+export class FilterNamePipe implements PipeTransform {
     transform(value: any, input: string) {
         if (input) {
             input = input.toLowerCase();

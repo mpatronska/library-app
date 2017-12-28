@@ -15,8 +15,8 @@
 
     <br/>
     <br/>
-    
-    <div *ngFor="let book of books | FilterPipe: queryString; let i = index">
+
+    <div *ngFor="let book of books | FilterNamePipe: queryString; let i = index">
       <div class="col-md-4">
         <h2>{{ book.name | uppercase }}</h2>
 

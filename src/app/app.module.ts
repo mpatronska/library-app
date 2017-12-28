@@ -17,7 +17,7 @@ import { CommentService } from './comments/comment.service';
 import { AddBookComponent } from './books/add-book/add-book.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
 import { CommentComponent } from './comments/comment/comment.component';
-import { FilterPipe } from './books/book/filter-pipe';
+import { FilterNamePipe } from './books/pipes/filter-name.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { FilterPipe } from './books/book/filter-pipe';
     AddBookComponent,
     EditBookComponent,
     CommentComponent,
-    FilterPipe
+    FilterNamePipe
   ],
   imports: [
     BrowserModule,
