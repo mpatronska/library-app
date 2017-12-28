@@ -15,7 +15,7 @@ export class AddBookComponent implements OnInit {
   public addBookSuccess: boolean;
   public addBookFail: boolean;
   public addedBook: string;
-  categories = ["novel", "prose", "fiction"];
+  categories = ["Classic", "Fantasy", "Biography", "Mythology", "Essay", "Philosophy", "Poetry"];
   category: string = "";
 
   constructor(private bookService: BookService, private router : Router) { }
