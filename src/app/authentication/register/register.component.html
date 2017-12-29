@@ -60,10 +60,5 @@
 
     <button [disabled]="!registerForm.form.valid" type="submit" class="btn btn-success">Submit</button>    
   </form>
-  <div *ngIf="registerSuccess" class="alert alert-success">
-    Successfull Registered {{registeredUser}}!
-  </div>
-  <div *ngIf="registerFail" class="alert alert-danger">
-      User already exists!
-  </div>
+
 </div>

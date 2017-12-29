@@ -3,6 +3,7 @@ import { BookModel } from '../model/book.model';
 import { BookService } from '../book.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-add-book',
@@ -12,13 +13,11 @@ import { NgForm } from '@angular/forms';
 export class AddBookComponent implements OnInit {
 
   public model: BookModel;
-  public addBookSuccess: boolean;
-  public addBookFail: boolean;
   public addedBook: string;
   categories = ["Classic", "Fantasy", "Biography", "Mythology", "Essay", "Philosophy", "Poetry"];
   category: string = "";
 
-  constructor(private bookService: BookService, private router : Router) { }
+  constructor(private bookService: BookService, private router : Router, private toastr: ToastsManager) { }
 
   ngOnInit() {
     this.model = new BookModel("", "", "", "", "");
@@ -29,14 +28,11 @@ export class AddBookComponent implements OnInit {
     this.bookService.addBook(this.model)
       .subscribe(
         data => {
-          this.addBookSuccess = true;
           this.addedBook = data['name'];
-          console.log('success: ' + data);
-          // this.router.navigate(['/books']);
+          this.toastr.success('Successfully added book.', 'Success!');
         },
         err => {
-          this.addBookFail = true;
-          console.log('fail: ' + err);
+          this.toastr.error('Problem adding book.', 'Oops!');
         }
       )
   }

@@ -79,12 +79,6 @@
   
       <button [disabled]="!addBookForm.form.valid" type="submit" class="btn btn-success">Submit</button>    
     </form>
-    <div *ngIf="addBookSuccess" class="alert alert-success">
-      Successfull Added Book {{addedBook}}!
-      
-    </div>
-    <div *ngIf="addBookFail" class="alert alert-danger">
-        Book already exists!
-    </div>
+    
   </div>
   

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterModel } from '../model/register.model';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-register',
@@ -11,10 +13,11 @@ export class RegisterComponent implements OnInit {
 
   public model: RegisterModel;
   public registeredUser : string;
-  public registerSuccess : boolean;
-  public registerFail : boolean;
 
-  constructor(private authService : AuthService) { }
+  constructor(
+    private router : Router, 
+    private authService : AuthService, 
+    private toastr: ToastsManager) { }
 
   ngOnInit() {
     this.model = new RegisterModel("", "", "", "");
@@ -24,11 +27,12 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.model)
       .subscribe(
         data => {
-          this.registerSuccess = true;
           this.registeredUser = data['username'];
+          this.toastr.success('Successfully registered.', 'Success!');
+          this.router.navigate(['/login']);
         },
         err => {
-          this.registerFail = true;
+          this.toastr.error('Problem registering user. Please try again.', 'Oops!');
         }
       )
   }

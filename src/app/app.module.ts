@@ -19,6 +19,9 @@ import { EditBookComponent } from './books/edit-book/edit-book.component';
 import { CommentComponent } from './comments/comment/comment.component';
 import { FilterNamePipe } from './books/pipes/filter-name.pipe';
 import { PagerService } from './books/pager.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastModule} from 'ng2-toastr/ng2-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { PagerService } from './books/pager.service';
     FormsModule,
     AuthModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastModule.forRoot()
   ],
   providers: [AuthGuard, BookService, MyBookService, CommentService, PagerService],
   bootstrap: [AppComponent]

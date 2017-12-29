@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginModel } from '../model/login.model';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,12 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   public model : LoginModel;
-  public loginFail : boolean;
   public username : string;
 
   constructor(
     private authService : AuthService,
-    private router : Router) { }
+    private router : Router,
+    private toastr: ToastsManager) { }
 
   ngOnInit() {
     this.model = new LoginModel("", "");
@@ -40,11 +41,11 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('role', 'admin');
           }
           console.log('role:' + localStorage.getItem('role'));
-          this.loginFail = false;
+          this.toastr.success('Successfully logged in.', 'Success!');
           this.router.navigate(['/books']);
         },
         err => {
-          this.loginFail = true;
+          this.toastr.error('Incorrect credentials. Please try again.', 'Oops!');
         }
       )
   }
