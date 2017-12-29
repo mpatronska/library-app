@@ -34,6 +34,8 @@ export class LoginComponent implements OnInit {
           this.authService.authtoken = data['_kmd']['authtoken'];
           localStorage.setItem('authtoken', data['_kmd']['authtoken']);
           localStorage.setItem('username', data['username']);
+          localStorage.setItem('firstName', data['username']);
+          localStorage.setItem('lastName', data['username']);
           localStorage.setItem('user_id', data['_id']);
           let hasRole: boolean = data['_kmd'].hasOwnProperty('roles');
           console.log('hasRole: ' + hasRole);

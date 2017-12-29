@@ -22,6 +22,8 @@ import { PagerService } from './books/pager.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastModule} from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileService } from './profile/profile.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AddBookComponent,
     EditBookComponent,
     CommentComponent,
-    FilterNamePipe
+    FilterNamePipe,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     ToastModule.forRoot()
   ],
-  providers: [AuthGuard, BookService, MyBookService, CommentService, PagerService],
+  providers: [AuthGuard, BookService, MyBookService, CommentService, PagerService, ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

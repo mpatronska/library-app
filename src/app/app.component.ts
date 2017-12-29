@@ -10,6 +10,7 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 })
 export class AppComponent {
   title = 'Online Library';
+  username: string;
   
   constructor(
     private authService : AuthService,
@@ -18,4 +19,7 @@ export class AppComponent {
       this.toastr.setRootViewContainerRef(vRef);
     }
 
+  ngOnInit() {
+    this.username = localStorage.getItem('username');
+  }
 }

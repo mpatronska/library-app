@@ -18,6 +18,9 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
+          <li *ngIf="authService.isLoggedIn()">
+            <a routerLink="/profile">Hello, {{ authService.getUser() }}</a>
+          </li>
           <li *ngIf="!authService.isLoggedIn()"><a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
           <li *ngIf="!authService.isLoggedIn()"><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           <!-- <li *ngIf="authService.isLoggedIn()"><a><span>Hello, localStorage.getItem('username')</span></a></li> -->

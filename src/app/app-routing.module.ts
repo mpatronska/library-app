@@ -9,6 +9,7 @@ import { MyBooksComponent } from './my-books/my-books.component';
 import { AddBookComponent } from './books/add-book/add-book.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
 import { CommentComponent } from './comments/comment/comment.component';
+import { ProfileComponent } from './profile/profile.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -17,6 +18,7 @@ const routes : Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
+  { path: 'profile', canActivate: [ AuthGuard ], component: ProfileComponent },
   { path: 'books', component: BookComponent},
   { path: 'mybooks', canActivate: [ AuthGuard ], component: MyBooksComponent },
   { path: 'books/add', canActivate: [ AuthGuard ], component: AddBookComponent },

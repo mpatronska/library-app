@@ -80,4 +80,8 @@ export class AuthService {
     this.currentAuthtoken = value;
   }
 
+  getUser(): string {
+    return localStorage.getItem('username');
+  }
+
 }
