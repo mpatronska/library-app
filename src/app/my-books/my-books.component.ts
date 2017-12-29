@@ -7,6 +7,7 @@ import { BookModel } from '../books/model/book.model';
 import { CommentModel } from '../comments/model/comment.model';
 import { Router } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { PagerService } from '../books/pager.service';
 
 @Component({
   selector: 'app-my-books',
@@ -20,6 +21,8 @@ export class MyBooksComponent implements OnInit {
   selectedBook: BookModel;
   hideme = [];
   hideComments = [];
+  pager: any = {};
+  pagedItems: any[];
 
   constructor(
     private myBookService: MyBookService, 
@@ -27,7 +30,8 @@ export class MyBooksComponent implements OnInit {
     private authService: AuthService,
     private commentService: CommentService,
     private router: Router,
-    private toastr: ToastsManager) { }
+    private toastr: ToastsManager,
+    private pagerService: PagerService) { }
 
   ngOnInit() {
     this.myBookService.getMyBooks()
@@ -36,7 +40,7 @@ export class MyBooksComponent implements OnInit {
           this.bookService.getBook(book.book_id)
             .subscribe(data => {
               this.myBooks.push(data);
-              console.log(this.myBooks);
+              this.setPage(1);
             })
         }
       })
@@ -46,6 +50,18 @@ export class MyBooksComponent implements OnInit {
         console.log(comments);
         this.comments = comments;
       })
+  }
+
+  setPage(page: number) {
+    if (page < 1 || page > this.pager.totalPages) {
+        return;
+    }
+
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.myBooks.length, page);
+
+    // get current page of items
+    this.pagedItems = this.myBooks.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
   showStatus(book: BookModel) {
@@ -64,8 +80,11 @@ export class MyBooksComponent implements OnInit {
         this.toastr.success('Successfully deleted book from MyBooks.', 'Success!');
 
         this.myBooks = this.myBooks.filter(item => {
-          return item._id !== bookId
+          return item._id !== bookId;
         });
+
+        this.pager = this.pagerService.getPager(this.myBooks.length, this.pager.currentPage);
+        this.pagedItems = this.myBooks.slice(this.pager.startIndex, this.pager.endIndex + 1);
         
       },
       err => {
