@@ -6,6 +6,7 @@ import { CommentService } from '../comments/comment.service';
 import { BookModel } from '../books/model/book.model';
 import { CommentModel } from '../comments/model/comment.model';
 import { Router } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-my-books',
@@ -25,7 +26,8 @@ export class MyBooksComponent implements OnInit {
     private bookService: BookService, 
     private authService: AuthService,
     private commentService: CommentService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastsManager) { }
 
   ngOnInit() {
     this.myBookService.getMyBooks()
@@ -46,14 +48,6 @@ export class MyBooksComponent implements OnInit {
       })
   }
 
-  // addToMyBooks(book: any): void {
-  //   console.log('here')
-  //   this.myBookService.addToMyBooks(book._id)
-  //     .subscribe(e=> {
-  //       console.log(e);
-  //     });      
-  // }
-
   showStatus(book: BookModel) {
     this.selectedBook = book;
   }
@@ -67,10 +61,15 @@ export class MyBooksComponent implements OnInit {
     this.myBookService.deleteFromMyBooks(bookId)
       .subscribe(data => {
 
+        this.toastr.success('Successfully deleted book from MyBooks.', 'Success!');
+
         this.myBooks = this.myBooks.filter(item => {
           return item._id !== bookId
         });
         
+      },
+      err => {
+        this.toastr.error('Problem deleting book from MyBooks.', 'Oops!');
       })
   }
 

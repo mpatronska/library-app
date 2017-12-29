@@ -7,6 +7,7 @@ import { CommentModel } from '../../comments/model/comment.model';
 import { Router } from '@angular/router';
 import { FilterNamePipe } from '../pipes/filter-name.pipe';
 import { PagerService } from '../pager.service';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-book',
@@ -31,7 +32,8 @@ export class BookComponent implements OnInit {
     private authService: AuthService, 
     private commentService: CommentService,
     private pagerService: PagerService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastsManager) { }
 
   ngOnInit() {
     this.bookService.getBooks()
@@ -61,13 +63,17 @@ export class BookComponent implements OnInit {
   }
 
   getBook(id: string) {
-    console.log("getBook:" + id);
     this.router.navigate([`/book/${id}`]);
   }
 
   addToMyBooks(book: any): void {
     this.bookService.addToMyBooks(book._id)
-      .subscribe(data => console.log(data));
+      .subscribe(data => {
+        this.toastr.success('Successfully added book to MyBooks.', 'Success!');
+      },
+      err => {
+        this.toastr.error('Problem adding book to MyBooks.', 'Oops!');
+      });
   }
 
   editBook(id: string) {
@@ -76,18 +82,24 @@ export class BookComponent implements OnInit {
 
   deleteBook(id: string) {
     this.bookService.deleteBook(id)
-      .subscribe(data => {        
+      .subscribe(data => {     
+        
+        this.toastr.warning('Successfully deleted book.', 'Success!');
 
         this.bookService.getBooks()
           .subscribe(books => {
-            console.log(books);
-            this.books = books
+            this.books = books;
+
+            this.pager = this.pagerService.getPager(this.books.length, this.pager.currentPage);
+            this.pagedItems = this.books.slice(this.pager.startIndex, this.pager.endIndex + 1);
           });        
+      },
+      err => {
+        this.toastr.error('Problem deleting book.', 'Oops!');
       });
 
       this.bookService.deleteMyBook(id)
         .subscribe(data => {});
-
 
   }
 

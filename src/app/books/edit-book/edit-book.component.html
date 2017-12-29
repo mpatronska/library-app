@@ -73,11 +73,6 @@
   
       <button [disabled]="!editBookForm.form.valid" type="submit" class="btn btn-success">Submit</button>    
     </form>
-    <div *ngIf="editBookSuccess" class="alert alert-success">
-      Successfull Edited Book!
-    </div>
-    <div *ngIf="editBookFail" class="alert alert-danger">
-      Book already exists!
-    </div>
+
   </div>
   
