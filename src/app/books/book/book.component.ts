@@ -113,7 +113,6 @@ export class BookComponent implements OnInit {
     this.commentService.getCommentsCountByBookId(bookId)
       .subscribe(data => {
         comments.push(data);
-        console.log("getCommentsCountByBookId: " + comments)
         count = comments.length;
       });
     
@@ -123,12 +122,17 @@ export class BookComponent implements OnInit {
   deleteComment(commentId: string): void {
     this.commentService.deleteComment(commentId)
       .subscribe(data => {
+
+        this.toastr.warning('Successfully deleted comment.', 'Success!');
         
         this.commentService.getComments()
         .subscribe(comments => {
           console.log(comments);
           this.comments = comments;
         })
+      },
+      err => {
+        this.toastr.error('Problem deleting comment.', 'Oops!');
       })
   }
 
