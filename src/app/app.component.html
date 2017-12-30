@@ -15,6 +15,7 @@
         <ul class="nav navbar-nav">
           <li><a routerLink="/books">Books</a></li>          
           <li *ngIf="authService.isLoggedIn() && !authService.isAdmin()"><a routerLink="/mybooks">My Books</a></li>
+          <li><a routerLink="/contacts">Contacts</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

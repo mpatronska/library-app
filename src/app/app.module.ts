@@ -24,6 +24,8 @@ import { ToastModule} from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileService } from './profile/profile.service';
+import { ContactsComponent } from './contacts/contacts.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { ProfileService } from './profile/profile.service';
     EditBookComponent,
     CommentComponent,
     FilterNamePipe,
-    ProfileComponent
+    ProfileComponent,
+    ContactsComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,10 @@ import { ProfileService } from './profile/profile.service';
     NgbModule.forRoot(),
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastModule.forRoot()
+    ToastModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA_cc9enLzAuQx_Eh5t8GPGL8jDG-_LmYs'
+    })
   ],
   providers: [AuthGuard, BookService, MyBookService, CommentService, PagerService, ProfileService],
   bootstrap: [AppComponent]
