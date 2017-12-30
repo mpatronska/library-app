@@ -23,7 +23,6 @@
           </li>
           <li *ngIf="!authService.isLoggedIn()"><a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
           <li *ngIf="!authService.isLoggedIn()"><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          <!-- <li *ngIf="authService.isLoggedIn()"><a><span>Hello, localStorage.getItem('username')</span></a></li> -->
           <li *ngIf="authService.isLoggedIn()"><a routerLink="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
       </div>
@@ -38,6 +37,6 @@
 
   <hr>
 
-  <footer>Online Library ©2017</footer>
+  <footer>Online Library © 2017</footer>
 </div>
 

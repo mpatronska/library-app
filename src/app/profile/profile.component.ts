@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfileService } from './profile.service';
 
@@ -12,6 +12,8 @@ export class ProfileComponent implements OnInit {
   username: string;
   firstName: string;
   lastName: string;
+  @ViewChild('myCanvas') myCanvas: ElementRef;
+  public context: CanvasRenderingContext2D;  
 
   constructor(private router: Router, private profileSerive: ProfileService) { }
 
@@ -23,7 +25,23 @@ export class ProfileComponent implements OnInit {
         this.firstName = data['firstName'];
         this.lastName = data['lastName'];
       })
+  }
 
+  ngAfterViewInit(): void {
+    let canvas = this.myCanvas.nativeElement;
+    this.context = (<HTMLCanvasElement>this.myCanvas.nativeElement).getContext('2d');
+    let image = new Image();
+    image.src = 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png';
+    image.onload = () => {
+      canvas.height = image.height;
+      canvas.width = image.width;
+      this.context.drawImage(image, 0, 0);
+    }
+  }
+    
+  onChange(event) {
+    let files = event.srcElement.files;
+    console.log(files);
   }
 
 }
