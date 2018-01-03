@@ -3,8 +3,6 @@
 
     <form (ngSubmit)="addComment(bookId); addCommentForm.reset()" #addCommentForm="ngForm">
       <div class="form-group">
-        <!-- <label for="name">Name</label> -->
-          
         <div class="form-group">
           <label for="comment">Comment:</label>
           <textarea [(ngModel)]="comment"  name="comment" #content="ngModel" class="form-control" rows="5" id="comment" placeholder="Type a comment here ..."></textarea>
@@ -14,10 +12,7 @@
           Comment is required!
         </div>
       </div>
-
-      <!-- <button [disabled]="!addCommentForm.form.valid" type="submit" class="btn btn-success">Submit</button> -->
       <button [disabled]="comment === undefined" type="submit" class="btn btn-success">Submit</button>
-
     </form>
 
 </div>

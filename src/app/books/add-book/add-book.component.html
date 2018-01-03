@@ -2,7 +2,6 @@
     <h1>Add Book</h1>
     <form (ngSubmit)="addBook(); addBookForm.reset()" #addBookForm="ngForm">
       <div class="form-group">
-        <!-- <label for="name">Name</label> -->
         <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon"></i>Book name</span>
           <input type="text" class="form-control" id="name" placeholder="Book Name"
@@ -17,8 +16,6 @@
       </div>
 
       <div class="form-group">
-        <!-- <label for="author">Author</label> -->
-
         <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon"></i>Author name</span>
           <input type="text" class="form-control" id="author" placeholder="Author name"
@@ -32,8 +29,7 @@
         </div>
       </div>
   
-      <div class="form-group">
-      
+      <div class="form-group">      
         <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon"></i>Category</span>
           <select name="category" class="form-control" [(ngModel)]="category" #categoryName="ngModel" required>
@@ -48,7 +44,6 @@
       </div>
 
       <div class="form-group">
-        <!-- <label for="category">Description</label> -->
         <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon"></i>Description</span>
           <input type="text" class="form-control" id="description" placeholder="Description"
@@ -63,7 +58,6 @@
       </div>
 
       <div class="form-group">
-        <!-- <label for="category">Image</label> -->
         <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon"></i>Image</span>
           <input type="text" class="form-control" id="image" placeholder="Image URL"

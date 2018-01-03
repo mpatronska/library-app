@@ -37,11 +37,6 @@ export class ProfileComponent implements OnInit {
       canvas.width = image.width;
       this.context.drawImage(image, 0, 0);
     }
-  }
-    
-  onChange(event) {
-    let files = event.srcElement.files;
-    console.log(files);
-  }
+  }    
 
 }

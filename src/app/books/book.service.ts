@@ -32,27 +32,15 @@ export class BookService {
   }
 
   addToMyBooks(id: string): Observable<any> {
-    // this.myBookService.getMyBooks()
-    //   .subscribe(data => {
-    //     this.myBooks.push(data);
-    //   });
-
-    // for (let myBook of this.myBooks) {
-    //   if (myBook.id === id) {
-    //     //The book is already added to MyBooks
-    //   } else {
-        return this.httpClient.post(MYBOOKS_URL,
-          {
-            user_id: localStorage.getItem('user_id'),
-            book_id: id,
-            status: 'Not Started'},
-          { 
-            headers: this.createAuthHeaders('Kinvey')
-          }
-        )
-    //   }
-    // }
-    
+    return this.httpClient.post(MYBOOKS_URL,
+      {
+        user_id: localStorage.getItem('user_id'),
+        book_id: id,
+        status: 'Not Started'},
+      { 
+        headers: this.createAuthHeaders('Kinvey')
+      }
+    )    
   }
 
   isMyBook(id: string): boolean {

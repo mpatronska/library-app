@@ -55,8 +55,7 @@ export class MyBookService {
         'Authorization': `Kinvey ${localStorage.getItem('authtoken')}`,
         'Content-Type': 'application/json'
       }
-    }
-  )
+    })
   }
 
 }
