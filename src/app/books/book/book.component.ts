@@ -38,14 +38,12 @@ export class BookComponent implements OnInit {
   ngOnInit() {
     this.bookService.getBooks()
       .subscribe(books => {
-        console.log(books);
         this.books = books;
         this.setPage(1);
       });
     
     this.commentService.getComments()
       .subscribe(comments => {
-        console.log(comments);
         this.comments = comments;
       })
   }
@@ -127,7 +125,6 @@ export class BookComponent implements OnInit {
         
         this.commentService.getComments()
         .subscribe(comments => {
-          console.log(comments);
           this.comments = comments;
         })
       },
