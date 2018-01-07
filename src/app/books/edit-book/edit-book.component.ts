@@ -13,6 +13,8 @@ export class EditBookComponent implements OnInit {
 
   id: string;
   @Input() model: BookModel;
+  categories = ["Classic", "Fantasy", "Biography", "Mythology", "Essay", "Philosophy", "Poetry"];
+  category: string = "";
 
   constructor(
     private bookService: BookService, 
