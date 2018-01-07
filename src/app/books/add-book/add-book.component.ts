@@ -14,7 +14,7 @@ export class AddBookComponent implements OnInit {
 
   public model: BookModel;
   public addedBook: string;
-  categories = ["Classic", "Fantasy", "Biography", "Mythology", "Essay", "Philosophy", "Poetry"];
+  categories = ["Classic", "Novel", "Fantasy", "Biography", "Mythology", "Essay", "Philosophy", "Poetry"];
   category: string = "";
 
   constructor(private bookService: BookService, private router : Router, private toastr: ToastsManager) { }
